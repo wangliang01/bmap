@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>添加网格</title>
+  <link rel="stylesheet" href="./css/common/reset.css">
+  <style>
+      #allmap {
+        overflow:hidden;
+        zoom:1;
+        position:relative;
+        width: 800px;
+        height: 550px;
+        margin: 0 auto;
+        padding-top: 50px; 
+      }
+      #map {
+        width:800px;
+        height: 500px;
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        border-bottom: 1px solid #ccc;
+      }
+    button {
+        margin-top: 10px;
+    }
+    #finished {
+        float: right;
+    }
+    #save-change {
+        float: left;
+        display: none;
+    }
+  </style>
+</head>
+<body>
+<div id="allmap">    
+    <div id="map" style=""></div>
+    <button id="finished" type="button">完成</button>
+    <button id="save-change" type="botton">保存修改</button>
+</div>
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=KG1KcIyG5ES73eTsfRgUqu6rknVhEeRZ"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+<link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+
+</script>
+</body>
+<script type="text/javascript" data-main="/js/main" src="/js/lib/require.js"></script>
+<script>
+  require(['app/editgrid']);
+</script>
+</html>

@@ -1,0 +1,71 @@
+@import "../common/reset.css";
+$baseFontsize: 12px;
+$baseFontFamily: "microsoft yahei";
+$baseColor: #333;
+
+.block-center {
+	margin-left: 0;
+	margin-right: 0;
+}
+.text-center {
+	text-align: center;
+}
+@mixin w-h($w:100%, $h:100%) {
+	width: $w;
+	height: $h;
+}
+@mixin baseBorder($w:1px, $s:solid, $c:#ccc) {
+	border-width: $w;
+	border-style: $s;
+	border-color: $c
+}
+html, body {
+	font-family: $baseFontFamily;
+	font-size: $baseFontsize;
+	color: $baseColor;
+}
+.wrap {
+	@include w-h($w:800px,$h:500px);
+	@include baseBorder($c:#333);
+	margin-top: 10px;
+	@extend .block-center; 
+	.map-wrap {
+		@include w-h($w:550px,$h:460px);
+		#map {
+			@include w-h();
+		}
+	}
+	.charts-wrap {
+		@include w-h($w:250px,$h:auto);
+		.base-msg {
+			@include w-h($h:125px);
+			padding: 0 15px;
+			line-height: 28px;
+			dt {
+				padding-top: 10px;
+				@extend .text-center;
+			}
+			dd {
+				float: left;
+				margin-right: 18px;
+				&.spe {
+					line-height: 20px;
+				}
+			}
+		}
+		.charts {
+			@include w-h($w:250px,$h:180px);
+		}
+		#time-charts {
+			height: 155px;
+		}
+	}
+	#addnew {
+		margin-top: 10px;
+		margin-left: 5px;
+	}
+}
+
+/* 隐藏百度水印 */
+.anchorBL { display: none; }
+

@@ -1,0 +1,10 @@
+h1{
+	color: yellow;
+}
+h2 {
+	font-size: 18px;
+	color: red;
+	background: blue;
+	width: 100px;
+	height: 200px;
+}

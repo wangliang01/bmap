@@ -1,0 +1,32 @@
+@import '../common/reset.css';
+$baseBgColor: #eee;
+$baseColor: #333;
+@mixin base-border($bdwidth:1px,$bdstyle:solid,$bdcolor:#ccc) {
+	border-width: $bdwidth;
+	border-style: $bdstyle;
+	border-color: $bdcolor;
+}
+
+html,body {
+	color: $baseColor;
+}
+h1 {
+	background-color: $baseBgColor;
+	@extend h2;
+}
+h2 {
+	width: 300px;
+	@include base-border($bdstyle:dashed,$bdcolor:#f90);
+}
+.header {
+	width: 100%;
+	padding: 0 15px;
+	li {
+		width: 500px;
+		background-color: #ccc;
+		margin-bottom: 10px;
+		&:hover {
+			background-color: darken(#ccc,20%);
+		}
+	}
+}

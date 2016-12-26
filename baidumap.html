@@ -1,0 +1,50 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="./css/common/reset.css">
+	<link rel="stylesheet" type="text/css" href="./css/baidumap.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=KG1KcIyG5ES73eTsfRgUqu6rknVhEeRZ"></script>
+	<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+	<!-- <script src="//cdn.bootcss.com/echarts/3.3.1/echarts.min.js"></script> -->
+	<title>事件一张图</title>
+</head>
+<body>
+	<div class="wrap">
+		<div class="map-wrap pos-r fl-l">
+			<div id="map"></div>
+			<div class="option-list" id="option-list">
+				<button id="edt">编辑</button>
+				<button id="det">删除</button>
+				<button id="save">保存</button>
+				<i></i>
+			</div>
+		</div>
+		<div class="charts-wrap fl-r">
+			<dl class="base-msg">
+				<dt>基本信息</dt>
+				<dd>编码：<span>0000000</span></dd>
+				<dd>网格负责人：<span>张三</span></dd>
+				<dd>名称：<span>长春-经济技术开发区-深圳街</span></dd>
+				<dd>网格类型:<span>噪声污染</span></dd>
+				<dd class="spe">面积：<span>8889m<sup>2</sup></span></dd>
+			</dl>
+			<div id="data-charts" class="charts"></div>
+			<div id="time-charts" class="charts"></div>
+		</div>
+		
+		<button id="addnew">添加新网格</button>
+
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/echarts/3.3.1/echarts.min.js"></script>
+	<!-- <script src="./js/modules/eventmapechart.js"></script>
+	<script src="./js/modules/map.js"></script> -->
+</body>
+<script type="text/javascript" charset="utf-8" src="js/lib/require.js"></script>
+<script src="js/main.js"></script>
+<script>
+	require(['app/map']);
+</script>
+</html>
+
