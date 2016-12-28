@@ -1,16 +1,12 @@
 define(['lib/tools'],function($$){   
     function drawOverlay(_map, data) {
         var selfOverlay = [];
-        var pollution = data.pollution;
-        for(var i in pollution) {
-            var markPoint = pollution[i].mark_area.mark_point;
-            var markStyle = pollution[i].mark_area.mark_style;
-            var id = pollution[i].identifier;
-            if(!$$.isEmptyObject(markStyle)) {
-                var _polygon = createpolygon(markPoint, markStyle, id);
-            }else {
-                var _polygon = createpolygon(markPoint, id);
-            }
+        var pollution = data.pollution || [];
+        //遍历数组
+        for(var i=0; i<pollution.length; i++) {
+            var markPoint = pollution[i].mark_area.mark_point || "";
+            var id = pollution[i].identifier || "";
+            var _polygon = createpolygon(markPoint, id);
             _map.addOverlay(_polygon); 
             selfOverlay.push(_polygon);
         }
@@ -19,8 +15,8 @@ define(['lib/tools'],function($$){
     function createpolygon(data) {
         var pointArr = [];
         var areaStyle = {};
-        var _id = 0;
-        if(typeof arguments[2] == 'undefined') {
+        var _id = arguments[1];
+        /*if(typeof arguments[2] == 'undefined') {
             if(typeof arguments[1] == 'object') {
                 areaStyle = arguments[1];
             }else {
@@ -29,7 +25,8 @@ define(['lib/tools'],function($$){
         }else {
             areaStyle = arguments[1];
             _id = arguments[2];
-        }
+        }*/
+        
         if(typeof data == 'string') {
             var newArr = data.split(';');
             for(var i = 0; i < newArr.length; i++) {
