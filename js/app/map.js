@@ -35,10 +35,10 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
         var _data = polluteData.pollution || [];
         var tempData = polluteData;
         //对_data进行遍历
-        for (var i = 0; i < _data.length; i++) {
+       /* for (var i = 0; i < _data.length; i++) {
             var markerData = _data[i].events || [];
             createMarker(map, markerData);
-        }
+        }*/
         selfOverlay = draw.drawOverlay(map, tempData); //绘出覆盖物
 
         // var optionList = document.getElementById('option-list');
@@ -49,22 +49,31 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
         map.addEventListener('click', function(e) {
             var overLays = map.getOverlays();
             var tempOverLays = [];
+            var tempMarkers = [];
+            for (var i = 0; i < overLays.length; i++) {
+                if (overLays[i].V.localName == "path") {
+                    tempOverLays.push(overLays[i]);
+                }else{
+                    tempMarkers.push(overLays[i]);
+                }
+            }
+            for (var j = 0; j < tempOverLays.length; j++) {
+                tempOverLays[j].setFillColor('yellow');
+            }
 
-
+            for(var k=0; k<tempMarkers.length; k++){
+                var marker = tempMarkers[k];
+                map.removeOverlay(marker);
+            }
             if (e.overlay) {
                 var self = e.overlay;
                 var _id = self.id;
                 //给点击所在网格添加颜色
-                for (var i = 0; i < overLays.length; i++) {
-                    if (overLays[i].V.localName == "path") {
-                        tempOverLays.push(overLays[i]);
-                    }
-                }
-                for (var j = 0; j < tempOverLays.length; j++) {
-                    tempOverLays[j].setFillColor('yellow');
-                }
                 self.setFillColor('green');
+                //加载基本信息
                 editBaseInfo(tempData, _id);
+                //加载事件小图标
+                loadMarker(map,tempData,_id);
                 if (!!_id && beforeId !== _id) {
                     beforeId = chart.createCharts(tempData, _id);
                 }
@@ -76,7 +85,11 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
 
 
 
-
+    function loadMarker(_map,renderDate,id){
+        var pollution = renderDate.pollution[id];
+        var events = pollution.events;
+        createMarker(_map,events);
+    }
 
     //生成事件小图标，点击跳转至详情页
     function createMarker(_map, events) {
@@ -123,26 +136,7 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
     }
 
 
-    function changeGridColor(renderDate, id) {
-        var pointArr = [];
-        var polygon;
-        map.getOverlays()
-        var pollution = renderDate.pollution[id];
-        var markArea = pollution.mark_area.mark_point || "";
-        var newArr = markArea.split(';');
-        for (var i = 0; i < newArr.length; i++) {
-            var itemPoint = newArr[i].split(',');
-            pointArr.push(new BMap.Point(parseFloat(itemPoint[0]), parseFloat(itemPoint[1])));
-        }
-        polygon = new BMap.Polygon(pointArr, {
-            strokeColor: "#f00",
-            strokeWeight: 2,
-            strokeOpacity: .6,
-            fillColor: "green",
-            fillOpacity: .4
-        });
-        return polygon;
-    }
+
 
 
 

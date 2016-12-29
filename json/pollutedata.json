@@ -90,7 +90,7 @@
 			},
 			"events": [
 				{
-					"e_point": "114.059092,22.550778",
+					"e_point": "114.059192,22.550878",
 					"e_detailurl": "http://baidu.com/",
 					"e_intro":{
 						"e_title": "重大煤气污染",
@@ -98,7 +98,7 @@
 					}
 				},
 				{
-					"e_point": "114.061041,22.550011",
+					"e_point": "114.061141,22.550111",
 					"e_detailurl": "http://baidu.com/",
 					"e_intro":{
 						"e_title": "重大煤气污染",
@@ -106,7 +106,7 @@
 					}
 				},
 				{
-					"e_point": "114.059559,22.54931",
+					"e_point": "114.059659,22.54831",
 					"e_detailurl": "http://baidu.com/",
 					"e_intro":{
 						"e_title": "重大煤气污染",
@@ -114,7 +114,7 @@
 					}
 				},
 				{
-					"e_point": "114.05858,22.549335",
+					"e_point": "114.05958,22.549435",
 					"e_detailurl": "http://baidu.com/",
 					"e_intro":{
 						"e_title": "重大煤气污染",
@@ -122,7 +122,7 @@
 					}
 				},
 				{
-					"e_point": "114.063619,22.55067",
+					"e_point": "114.063719,22.55167",
 					"e_detailurl": "http://baidu.com/",
 					"e_intro":{
 						"e_title": "重大煤气污染",
@@ -145,6 +145,56 @@
 			"identifier": "1"
 		},
 		{
+			"baseInfo": {
+				"gridCode": "1002",
+				"userId": "1002",
+				"userName": "李四",
+				"gridFullName": "吉林省-长春市-梅河口市",
+				"gridType": "市网格",
+				"gridArea": "20000"
+			},
+			"events": [
+				{
+					"e_point": "114.059092,22.550778",
+					"e_detailurl": "http://baidu.com/",
+					"e_intro":{
+						"e_title": "重大煤气污染",
+						"e_cont": "xx年xx月，什么什么........"
+					}
+				},
+				{
+					"e_point": "114.061131,22.550101",
+					"e_detailurl": "http://baidu.com/",
+					"e_intro":{
+						"e_title": "重大煤气污染",
+						"e_cont": "xx年xx月，什么什么什么什么什么什么什么什么........"
+					}
+				},
+				{
+					"e_point": "114.059649,22.54821",
+					"e_detailurl": "http://baidu.com/",
+					"e_intro":{
+						"e_title": "重大煤气污染",
+						"e_cont": "xx年xx月，什么什么........"
+					}
+				},
+				{
+					"e_point": "114.05848,22.549425",
+					"e_detailurl": "http://baidu.com/",
+					"e_intro":{
+						"e_title": "重大煤气污染",
+						"e_cont": "xx年xx月，什么什么........"
+					}
+				},
+				{
+					"e_point": "114.063709,22.55157",
+					"e_detailurl": "http://baidu.com/",
+					"e_intro":{
+						"e_title": "重大煤气污染",
+						"e_cont": "xx年xx月，什么什么........"
+					}
+				}
+			],
 			"mark_area": 
 			{
 				"mark_point": "114.059564,22.550042;114.061351,22.550058;114.061306,22.548548;114.059689,22.548456;114.059564,22.550042"
