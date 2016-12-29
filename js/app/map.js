@@ -34,61 +34,61 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
         var selfOverlay = []; //自定义覆盖物
         var _data = polluteData.pollution || [];
         var tempData = polluteData;
-        //对_data进行遍历
-       /* for (var i = 0; i < _data.length; i++) {
-            var markerData = _data[i].events || [];
-            createMarker(map, markerData);
-        }*/
         selfOverlay = draw.drawOverlay(map, tempData); //绘出覆盖物
-
-        // var optionList = document.getElementById('option-list');
-
-
-
         //给覆盖物增加点击事件（网格事件）
-        map.addEventListener('click', function(e) {
-            var overLays = map.getOverlays();
-            var tempOverLays = [];
-            var tempMarkers = [];
-            for (var i = 0; i < overLays.length; i++) {
-                if (overLays[i].V.localName == "path") {
-                    tempOverLays.push(overLays[i]);
-                }else{
-                    tempMarkers.push(overLays[i]);
-                }
-            }
-            for (var j = 0; j < tempOverLays.length; j++) {
-                tempOverLays[j].setFillColor('yellow');
-            }
+        for (var count = 0; count < selfOverlay.length; count++) {
 
-            for(var k=0; k<tempMarkers.length; k++){
-                var marker = tempMarkers[k];
-                map.removeOverlay(marker);
-            }
-            if (e.overlay) {
-                var self = e.overlay;
-                var _id = self.id;
-                //给点击所在网格添加颜色
-                self.setFillColor('green');
-                //加载基本信息
-                editBaseInfo(tempData, _id);
-                //加载事件小图标
-                loadMarker(map,tempData,_id);
-                if (!!_id && beforeId !== _id) {
-                    beforeId = chart.createCharts(tempData, _id);
-                }
-            }
-        });
+            (function(count) {
+                selfOverlay[count].addEventListener('click', function(e) {
+                    var overLays = map.getOverlays();
+                    var tempMarkers = [];
+                    if (overLays) {
+                        for (var i = 0; i < overLays.length; i++) {
+                            if(overLays[i].V){
+                                if (overLays[i].V.localName !== "path") {
+                                    tempMarkers.push(overLays[i]);
+                                }
+                            }
+                        }
+                    }
+                    //默认每个网格的填充色都为黄色
+                    for (var j = 0; j < selfOverlay.length; j++) {
+                        selfOverlay[j].setFillColor('yellow');
+                    }
+                    //选中网格变为绿色
+                    selfOverlay[count].setFillColor('green');
+
+                    //清除地图中的事件小图标
+                    for (var k = 0; k < tempMarkers.length; k++) {
+                        var marker = tempMarkers[k];
+                        map.removeOverlay(marker);
+                    }
+
+                    //加载基本信息
+                    editBaseInfo(tempData, count);
+                    //加载事件小图标
+                    loadMarker(map, tempData, count);
+                    if (beforeId !== count) {
+                        beforeId = chart.createCharts(tempData, count);
+                    }
+                })
+            })(count);
+        }
+
+        //默认触发一次
+        selfOverlay[0].dispatchEvent('click');
+
+        
     }
 
 
 
 
 
-    function loadMarker(_map,renderDate,id){
+    function loadMarker(_map, renderDate, id) {
         var pollution = renderDate.pollution[id];
         var events = pollution.events;
-        createMarker(_map,events);
+        createMarker(_map, events);
     }
 
     //生成事件小图标，点击跳转至详情页
@@ -126,7 +126,7 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
         var userName = pollution.baseInfo.userName;
         var gridFullName = pollution.baseInfo.gridFullName;
         var gridType = pollution.baseInfo.gridType;
-        var gridArea = pollution.gridArea;
+        var gridArea = pollution.baseInfo.gridArea+"m";
         //加载信息
         $('.grid-code').html(gridCode);
         $('.user-name').html(userName);

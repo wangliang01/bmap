@@ -16,10 +16,10 @@
 	"pollution": [
 		{
 			"baseInfo": {
-				"gridCode": "10",
+				"gridCode": "1010",
 				"userId": "1001",
 				"userName": "张三",
-				"gridFullName": "吉林省-长春市-梅河口市",
+				"gridFullName": "吉林省-长春市",
 				"gridType": "市网格",
 				"gridArea": "20000"
 			},
@@ -81,12 +81,12 @@
 		},
 		{
 			"baseInfo": {
-				"gridCode": "1002",
+				"gridCode": "101010",
 				"userId": "1002",
 				"userName": "李四",
 				"gridFullName": "吉林省-长春市-梅河口市",
-				"gridType": "市网格",
-				"gridArea": "20000"
+				"gridType": "区网格",
+				"gridArea": "12000"
 			},
 			"events": [
 				{
@@ -146,12 +146,12 @@
 		},
 		{
 			"baseInfo": {
-				"gridCode": "1002",
+				"gridCode": "101012",
 				"userId": "1002",
-				"userName": "李四",
-				"gridFullName": "吉林省-长春市-梅河口市",
-				"gridType": "市网格",
-				"gridArea": "20000"
+				"userName": "王五",
+				"gridFullName": "吉林省-长春市-大运河",
+				"gridType": "区网格",
+				"gridArea": "9000"
 			},
 			"events": [
 				{
