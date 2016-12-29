@@ -41,7 +41,7 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
         }
         selfOverlay = draw.drawOverlay(map, tempData); //绘出覆盖物
 
-        var optionList = document.getElementById('option-list');
+        // var optionList = document.getElementById('option-list');
 
 
 
@@ -49,25 +49,21 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
         map.addEventListener('click', function(e) {
             var overLays = map.getOverlays();
             var tempOverLays = [];
-            for (var i = 0; i < overLays.length; i++) {
-                if (overLays[i].V.localName == "path") {
-                    tempOverLays.push(overLays[i]);
-                }
-            }
+
 
             if (e.overlay) {
                 var self = e.overlay;
                 var _id = self.id;
                 //给点击所在网格添加颜色
-                for (var j = 0; j < tempOverLays[j].length; j++) {
-                    tempOverLays[i].setFillColor('yellow');
+                for (var i = 0; i < overLays.length; i++) {
+                    if (overLays[i].V.localName == "path") {
+                        tempOverLays.push(overLays[i]);
+                    }
+                }
+                for (var j = 0; j < tempOverLays.length; j++) {
+                    tempOverLays[j].setFillColor('yellow');
                 }
                 self.setFillColor('green');
-                // var _polygonArr = changeGridColor(tempData, _id);
-                // for (var i = 0; i < _polygonArr.length; i++) {
-                //     var polygon = _polygonArr[i];
-                //     map.addOverlay(polygon);
-                // }
                 editBaseInfo(tempData, _id);
                 if (!!_id && beforeId !== _id) {
                     beforeId = chart.createCharts(tempData, _id);
@@ -106,7 +102,7 @@ define(['lib/tools', 'app/eventmapechart', 'app/drawoverlays'], function($$, cha
         var infoWindow = new BMap.InfoWindow(sContent);
         marker.addEventListener("click", function() {
             this.openInfoWindow(infoWindow);
-            // infoWindow.redraw();	
+            // infoWindow.redraw(); 
         });
         //marker.setAnimation(BMAP_ANIMATION_BOUNCE);//跳动
     }
